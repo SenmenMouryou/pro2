@@ -5,11 +5,11 @@
             <el-dropdown trigger="click" @command="handleCommand">
                 <span class="el-dropdown-link">
                     <img class="user-logo" src="../../../static/img/img.jpg">
-                    {{username}}
+                    {{nickName}}
                 </span>
                 <el-dropdown-menu slot="dropdown">
-                    <el-dropdown-item command="login">登录</el-dropdown-item>
-                    <el-dropdown-item command="loginout">退出</el-dropdown-item>
+                    <el-dropdown-item v-if="isLogin" command="loginout">退出</el-dropdown-item>
+                    <el-dropdown-item v-else command="login">登录</el-dropdown-item>
                 </el-dropdown-menu>
             </el-dropdown>
         </div>
@@ -23,23 +23,34 @@
             }
         },
         computed:{
-            username(){
-                let username = this.getCookie("nickName");
+            nickName(){
+                let nickName = this.getCookie("nickName");
                 console.log("cookie get\n"
-                    +"data:"+this.getCookie("nickName"));
+                    +"nickName:"+this.getCookie("nickName"));
 
-                return username ? username : this.defaultName;
+                return nickName ? nickName : this.defaultName;
+            },
+            isLogin(){
+                let isLogin = this.getCookie("nickName");
+                return !!isLogin;
             }
         },
         methods:{
             handleCommand(command) {
                 if(command == 'login'){
                     this.$router.push('/login');
-
                 }else if(command == 'loginout'){
-                    // localStorage.removeItem('ms_username');
-                    // localStorage.setItem('ms_isLogin','false');
-                    this.userInfo={};
+                    this.setCookie('nickName','',1);
+                    console.log("cookie reset!\n");
+
+                    this.setCookie('id','',1);
+                    console.log("cookie reset!\n");
+
+                    this.setCookie('accessToken','',1);
+                    console.log("cookie reset!\n");
+
+                    console.log("log out! "+this.getCookie("isLogin"));
+                    location.reload();
                 }
             }
         }

@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="img">
         <img src="../../assets/shouye.png" alt="首页">
     </div>
 </template>
@@ -11,7 +11,8 @@
 </script>
 
 <style scoped>
-    img{
+    .img{
         height: 100%;
+        margin: -40px;
     }
 </style>

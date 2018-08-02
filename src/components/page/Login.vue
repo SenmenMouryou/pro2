@@ -37,7 +37,7 @@
                     </div>
                 </el-form-item>
             </el-form>
-            <el-dialog id="putDialog" title="注册" :visible.sync="putDialogFormVisible">
+            <el-dialog id="putDialog" style="width: 1000px" title="注册" :visible.sync="putDialogFormVisible">
                 <sign-up></sign-up>
             </el-dialog>
 
@@ -138,7 +138,7 @@
     .ms-login{
         position: absolute;
         top: 20%;
-        width:400px;
+        width:500px;
         height:160px;
         margin:40px;
         border-radius: 5px;

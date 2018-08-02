@@ -41,10 +41,10 @@
                         <el-col :span="12">
                             <el-input v-model="form.checkCode" placeholder="请输入"></el-input>
                         </el-col>
-                        <el-co0l :span="3">
+                        <el-co0l :span="2">
                             <img src="">
                         </el-co0l>
-                        <el-col :span="9">
+                        <el-col :span="10">
                             <img :src.sync="authSrc" @click="updateAuthCode()">
                         </el-col>
 
@@ -130,13 +130,13 @@
                 self.$refs[formName].resetFields();
             },
             onSubmit(formName) {
+                this.$router.push('/login');
+                console.log("to login");
                 const self = this;
-                self.$router.push('/login');
                 self.$refs[formName].validate((valid) => {
                     if (valid) {
                         this.putDevice(this.form);
                         console.log("form data submit");
-
                     } else {
                         console.log('error submit!!');
                         return false;
@@ -147,6 +147,7 @@
                 this.$http.post(this.url, form).then((form) => form.json().then((data) => {
                     if (data.code == 200) {
                         this.$message.success('注册成功');
+                        this.$router.push('/login');
                     }else {
                         this.$message.error(data.message);
                         this.$message.error('注册失败');

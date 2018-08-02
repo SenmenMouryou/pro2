@@ -134,8 +134,6 @@
                 self.$refs[formName].resetFields();
             },
             onSubmit(formName) {
-                this.$router.push('/login');
-                console.log("to login");
                 const self = this;
                 self.$refs[formName].validate((valid) => {
                     if (valid) {
@@ -152,6 +150,7 @@
                     if (data.code == 200) {
                         this.$message.success('注册成功');
                         this.$router.push('/login');
+                        location.reload();
                     }else {
                         this.$message.error(data.message);
                         this.$message.error('注册失败');

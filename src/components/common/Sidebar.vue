@@ -83,11 +83,6 @@
                         title: '拖拽'
                     },
                     {
-                        icon: 'el-icon-plus',
-                        index: 'login',
-                        title: '登录'
-                    },
-                    {
                         icon: 'el-icon-edit',
                         index: 'liuyanban',
                         title: '留言板'

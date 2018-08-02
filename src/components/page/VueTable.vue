@@ -31,19 +31,19 @@
                 },
                 columns: [
                     {
-                        name: 'Id',
+                        defaultName: 'Id',
                         key: 'id',
                     },
                     {
-                        name: 'Name',
+                        defaultName: 'Name',
                         key: 'name',
                     },
                     {
-                        name: 'email',
+                        defaultName: 'email',
                         key: 'email',
                     },
                     {
-                        name: 'ip',
+                        defaultName: 'ip',
                         key: 'ip',
                     }
                 ],
@@ -75,7 +75,7 @@
             getData(){
                 const self = this;
                 return self.information.data.filter(function (d) {
-                    if(d.name.indexOf(self.query) > -1){
+                    if(d.defaultName.indexOf(self.query) > -1){
                         return d;
                     }
                 })

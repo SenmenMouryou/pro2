@@ -7,13 +7,13 @@ module.exports = {
   },
   output: {
     path: path.join(__dirname, '../static/js'),
-    filename: '[name].dll.js',
-    library: '[name]_library'
+    filename: '[defaultName].dll.js',
+    library: '[defaultName]_library'
   },
   plugins: [
     new webpack.DllPlugin({
-      path: path.join(__dirname, '.', '[name]-manifest.json'),
-      name: '[name]_library'
+      path: path.join(__dirname, '.', '[defaultName]-manifest.json'),
+      defaultName: '[defaultName]_library'
     }),
     new webpack.optimize.UglifyJsPlugin({
       compress: {

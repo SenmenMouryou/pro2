@@ -65,14 +65,14 @@
                 return self.tableData.filter(function(d){
                     let is_del = false;
                     for (let i = 0; i < self.del_list.length; i++) {
-                        if(d.name === self.del_list[i].name){
+                        if(d.defaultName === self.del_list[i].defaultName){
                             is_del = true;
                             break;
                         }
                     }
                     if(!is_del){
-                        if(d.address.indexOf(self.select_cate) > -1 && 
-                            (d.name.indexOf(self.select_word) > -1 ||
+                        if(d.address.indexOf(self.select_cate) > -1 &&
+                            (d.defaultName.indexOf(self.select_word) > -1 ||
                             d.address.indexOf(self.select_word) > -1)
                         ){
                             return d;
@@ -116,7 +116,7 @@
                 let str = '';
                 self.del_list = self.del_list.concat(self.multipleSelection);
                 for (let i = 0; i < length; i++) {
-                    str += self.multipleSelection[i].name + ' ';
+                    str += self.multipleSelection[i].defaultName + ' ';
                 }
                 self.$message.error('删除了'+str);
                 self.multipleSelection = [];

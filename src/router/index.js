@@ -61,7 +61,11 @@ export default new Router({
                     path: '/liuyanban',
                     component: resolve => require(['../components/page/MessageBoard.vue'], resolve)    // 首页组件
                 }
-                ]
-        }
+            ]
+        },
+        {
+            path: '/sign-up',
+            component: resolve => require(['../components/page/SignUp.vue'], resolve)
+        },
     ]
 })

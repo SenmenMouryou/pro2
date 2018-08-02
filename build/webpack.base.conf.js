@@ -14,7 +14,7 @@ module.exports = {
   },
   output: {
     path: config.build.assetsRoot,
-    filename: '[name].js',
+    filename: '[defaultName].js',
     publicPath: process.env.NODE_ENV === 'production'
       ? config.build.assetsPublicPath
       : config.dev.assetsPublicPath
@@ -48,7 +48,7 @@ module.exports = {
         loader: 'url-loader',
         query: {
           limit: 10000,
-          name: utils.assetsPath('img/[name].[hash:7].[ext]')
+          defaultName: utils.assetsPath('img/[defaultName].[hash:7].[ext]')
         }
       },
       {
@@ -56,7 +56,7 @@ module.exports = {
         loader: 'url-loader',
         query: {
           limit: 10000,
-          name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
+          defaultName: utils.assetsPath('fonts/[defaultName].[hash:7].[ext]')
         }
       }
     ]

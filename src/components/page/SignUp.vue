@@ -1,10 +1,6 @@
 <template>
     <div>
-        <div class="crumbs">
-            <el-breadcrumb separator="/">
-                <el-breadcrumb-item><i class="el-icon-plus"></i> 注册</el-breadcrumb-item>
-            </el-breadcrumb>
-        </div>
+
         <div class="form-box">
             <el-form ref="form" :model="form" :rules="rules" label-width="80px">
 
@@ -19,7 +15,7 @@
                 </el-form-item>
 
                 <el-form-item prop="passwordAgain" label="重复密码">
-                    <el-input type="password" v-model="passwordAgain"></el-input>
+                    <el-input type="password" v-model="form.passwordAgain"></el-input>
                 </el-form-item>
 
                 <el-form-item prop="isMember" label="会员注册">
@@ -27,7 +23,7 @@
                 </el-form-item>
 
                 <el-form-item prop="name" label="姓名" v-if="form.isMember">
-                    <el-input v-model="form.name" ></el-input>
+                    <el-input v-model="form.defaultName" ></el-input>
                 </el-form-item>
                 <el-form-item prop="student_id" label="学号" v-if="form.isMember">
                     <el-input v-model="form.student_id" placeholder="(13位学生证号)"></el-input>
@@ -45,7 +41,10 @@
                         <el-col :span="12">
                             <el-input v-model="form.checkcode" placeholder="请输入"></el-input>
                         </el-col>
-                        <el-col :span="12">
+                        <el-col :span="3">
+                            <img src="">
+                        </el-col>
+                        <el-col :span="9">
                             <img :src="src">
                         </el-col>
 
@@ -69,7 +68,7 @@
         data: function(){
             // 密码验证
             let validatorPassAgain = (rule, value, callback) => {
-                if (this.form.password!=this.passwordAgain) {
+                if (this.form.password!=this.form.passwordAgain) {
                     callback(new Error('密码不一致'))
                 } else {
                     callback()
@@ -82,11 +81,12 @@
                     password:'',
                     isMember:false,
                     student_id:'',
-                    name:'',
+                    defaultName:'',
                     sex:'1',
-                    checkcode:''
+                    checkcode:'',
+                    passwordAgain:''
                 },
-                passwordAgain:'',
+
                 url:'/api/user/register',
                 src: 'http://localhost:8888/user/authCode?a=11',
                 rules: {
@@ -106,7 +106,7 @@
                         { required: true, message: '请确认密码', trigger: 'blur' },
                         { validator: validatorPassAgain, message: '前后输入不一致', trigger:'blur'}
                     ],
-                    name:[
+                    defaultName:[
                         { required: true, message: '请输入姓名', trigger: 'blur'},
                         { pattern:/^[\u4e00-\u9fa5]{0,}$/, message: '请输入真实姓名',trigger:'blur' }
 

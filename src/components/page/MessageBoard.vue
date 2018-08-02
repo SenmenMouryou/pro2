@@ -66,7 +66,7 @@
         computed:{
             userID(){
                 let userID = localStorage.getItem('ms_username');
-                return userID ? userID : this.name;
+                return userID ? userID : this.defaultName;
             }
         },
     }

@@ -8,6 +8,7 @@
                     {{username}}
                 </span>
                 <el-dropdown-menu slot="dropdown">
+                    <el-dropdown-item command="login">登录</el-dropdown-item>
                     <el-dropdown-item command="loginout">退出</el-dropdown-item>
                 </el-dropdown-menu>
             </el-dropdown>
@@ -18,38 +19,28 @@
     export default {
         data() {
             return {
-                name: '登录',
+                defaultName: '登录',
+                userInfo:{email:''}
             }
         },
         computed:{
             username(){
-                let username = localStorage.getItem('ms_username');
-                return username ? username : this.name;
-            },
-            isLogin(){
-                let isLogin = localStorage.getItem('ms_isLogin');
-                return isLogin;
+                let username = this.userInfo.nickName;
+
+                username = this.userInfo.email;
+
+                return username ? username : this.defaultName;
             }
         },
         methods:{
             handleCommand(command) {
-                if(command == 'loginout'){
-                    console.log("Header.vue:"
-                        +"ms_username:"+localStorage.getItem('ms_username')+"\n"
-                        +"Header.username:"+this.username+"\n"
-                        +"ms_isLogin"+localStorage.getItem('ms_isLogin')+"\n"
-                        +"Header.isLogin"+this.isLogin+"\n"
-                    );
-                    localStorage.removeItem('ms_username');
-                    localStorage.setItem('ms_isLogin','false');
-                    console.log("Header.vue:"
-                        +"ms_username:"+localStorage.getItem('ms_username')+"\n"
-                        +"Header.username:"+this.username+"\n"
-                        +"ms_isLogin"+localStorage.getItem('ms_isLogin')+"\n"
-                        +"Header.isLogin"+this.isLogin+"\n"
-                    );
-
+                if(command == 'login'){
                     this.$router.push('/login');
+
+                }else if(command == 'loginout'){
+                    // localStorage.removeItem('ms_username');
+                    // localStorage.setItem('ms_isLogin','false');
+                    this.userInfo={};
                 }
             }
         }

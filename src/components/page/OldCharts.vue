@@ -35,7 +35,7 @@
     // import IEcharts from 'vue-echarts-v3';
     import vSchart from 'vue-schart';
     import IEcharts from 'vue-echarts-v3/src/lite.vue';
-  
+
     import 'echarts/lib/chart/bar';
     import 'echarts/lib/chart/line';
     import 'echarts/lib/chart/pie';
@@ -48,12 +48,12 @@
         },
         data: () => ({
             data:[
-            {name:'2012',value:1141},
-            {name:'2013',value:1499},
-            {name:'2014',value:2260},
-            {name:'2015',value:1170},
-            {name:'2016',value:970},
-            {name:'2017',value:1450}
+            {defaultName:'2012',value:1141},
+            {defaultName:'2013',value:1499},
+            {defaultName:'2014',value:2260},
+            {defaultName:'2015',value:1170},
+            {defaultName:'2016',value:970},
+            {defaultName:'2017',value:1450}
         ],
             line: {
                 color:["#20a0ff","#13CE66","#F7BA2A","#FF4949"],
@@ -66,7 +66,7 @@
                 yAxis:{},
                 series: [
                     {
-                        name: "销量",
+                        defaultName: "销量",
                         type: "line",
                         data: [5, 20, 36, 10, 10, 20]
                     }
@@ -83,7 +83,7 @@
                 yAxis:{},
                 series: [
                     {
-                        name: "销量",
+                        defaultName: "销量",
                         type: "bar",
                         data: [5, 20, 36, 10, 10, 20]
                     }
@@ -106,16 +106,16 @@
                 },
                 series : [
                     {
-                        name: '销量',
+                        defaultName: '销量',
                         type: 'pie',
                         radius : '55%',
                         center: ['50%', '50%'],
                         data:[
-                            {value:335, name:'衬衫'},
-                            {value:310, name:'羊毛衫'},
-                            {value:234, name:'雪纺衫'},
-                            {value:135, name:'裤子'},
-                            {value:548, name:'高跟鞋'}
+                            {value:335, defaultName:'衬衫'},
+                            {value:310, defaultName:'羊毛衫'},
+                            {value:234, defaultName:'雪纺衫'},
+                            {value:135, defaultName:'裤子'},
+                            {value:548, defaultName:'高跟鞋'}
                         ],
                         itemStyle: {
                             emphasis: {
@@ -144,15 +144,15 @@
                 },
                 series : [
                     {
-                        name: '销量',
+                        defaultName: '销量',
                         type: 'pie',
                         radius : ['40%','60%'],
                         data:[
-                            {value:335, name:'衬衫'},
-                            {value:310, name:'羊毛衫'},
-                            {value:234, name:'雪纺衫'},
-                            {value:135, name:'裤子'},
-                            {value:548, name:'高跟鞋'}
+                            {value:335, defaultName:'衬衫'},
+                            {value:310, defaultName:'羊毛衫'},
+                            {value:234, defaultName:'雪纺衫'},
+                            {value:135, defaultName:'裤子'},
+                            {value:548, defaultName:'高跟鞋'}
                         ],
                         itemStyle: {
                             emphasis: {
@@ -175,17 +175,17 @@
                     yAxis:{},
                     series: [
                         {
-                            name: "步步高",
+                            defaultName: "步步高",
                             type: "line",
                             data: [15, 20, 26, 30, 40, 27]
                         },
                         {
-                            name: "小天才",
+                            defaultName: "小天才",
                             type: "bar",
                             data: [5, 30, 36, 10, 34, 20]
                         },
                         {
-                            name: "imoo",
+                            defaultName: "imoo",
                             type: "bar",
                             data: [35, 40, 30, 50, 60, 40]
                         }

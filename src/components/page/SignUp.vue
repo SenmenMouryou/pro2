@@ -50,12 +50,16 @@
 
                     </div>
                 </el-form-item>
-
                 <el-form-item>
-                    <el-button type="primary" @click="onSubmit('form')">提交</el-button>
-                    <el-button @click="reset('form')">重置</el-button>
+                    <div class="login-btn">
+                        <el-col :span="6">
+                            <el-button type="primary" @click="onSubmit('form')">提交</el-button>
+                        </el-col>
+                        <el-col :span="6">
+                            <el-button @click="reset('form')">重置</el-button>
+                        </el-col>
+                    </div>
                 </el-form-item>
-
 
             </el-form>
         </div>
@@ -82,7 +86,7 @@
                     isMember:false,
                     studentID:'',
                     name:'',
-                    sex:1,
+                    sex:null,
                     checkCode:'',
                     passwordAgain:''
                 },

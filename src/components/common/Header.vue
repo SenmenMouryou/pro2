@@ -19,15 +19,14 @@
     export default {
         data() {
             return {
-                defaultName: '登录',
-                userInfo:{email:''}
+                defaultName: '登录'
             }
         },
         computed:{
             username(){
-                let username = this.userInfo.nickName;
-
-                username = this.userInfo.email;
+                let username = this.getCookie("nickName");
+                console.log("cookie get\n"
+                    +"data:"+this.getCookie("nickName"));
 
                 return username ? username : this.defaultName;
             }

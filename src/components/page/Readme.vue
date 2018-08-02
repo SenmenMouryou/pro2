@@ -53,7 +53,6 @@
                 </p>
             </article>
         </div>
-
     </div>
 </template>
 

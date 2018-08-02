@@ -57,6 +57,7 @@
                     password: '',
                     authcode: ''
                 },
+                getform: {},
                 url:'',
                 putDialogFormVisible:false,
                 authSrc:'http://localhost:8888/user/authCode?a=11',
@@ -88,20 +89,24 @@
                 });
             },
             updateDevice(form) {
-                this.HEADER.userInfo.email = this.ruleForm.email;
+                // this.HEADER.userInfo.email = this.ruleForm.email;
                 this.$http.post(this.url, form).then((form) => form.json().then((data) => {
                     if (data.code == 200) {
-                        /*
-                        localStorage.setItem('ms_username',self.ruleForm.username);
-                        localStorage.setItem('ms_isLogin','true');*/
+                        this.getform = data.data;
+                        console.log("data get:\n"+
+                            "form:"+this.getform);
 
-                        this.HEADER.userInfo = data.data();
-
-                        console.log("Login.vue:"+localStorage.getItem('ms_username')
-                            +"\n"+localStorage.getItem('ms_isLogin'));
-
-                        self.$router.push('/readme');
+                        this.setCookie('nickName',this.getform.nickName,1);
+                        console.log("cookie set!\n"
+                            +"nickName:"+this.getForm.nickName);
+                        this.setCookie('id',this.getform.id,1);
+                        console.log("cookie set!\n"
+                            +"id:"+this.getForm.id);
+                        this.setCookie('accessToken',this.getform.accessToken,1);
+                        console.log("cookie set!\n"
+                            +"accessToken:"+this.getForm.accessToken);
                         location.reload();
+                        self.$router.push('/readme');
                         this.$message.success('登录成功');
                     }else {
                         this.$message.error(data.data);
